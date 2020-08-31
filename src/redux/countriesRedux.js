@@ -5,7 +5,7 @@ export const getCountryByCode = ({countries}, countryCode) => countries[countryC
 
 /* ACTIONS */
 
-/*
+
 // action name creator
 const reducerName = 'countries';
 const createActionName = name => `app/${reducerName}/${name}`;
@@ -23,4 +23,4 @@ export default function reducer(statePart = [], action = {}) {
       return statePart;
   }
 }
-*/
+
