@@ -11,6 +11,10 @@ import Trips from './components/views/Trips/TripsContainer';
 import Info from './components/views/Info/Info';
 // import other Countries /ML
 import Countries from './components/views/Countries/CountriesContainer';
+// import other Country /ML
+import Country from './components/views/Country/CountryContainer';
+// import other Trip /ML
+import Trip from './components/views/Trip/TripContainer';
 // import other Regions /ML
 import Regions from './components/views/Regions/RegionsContainer';
 
@@ -52,6 +56,8 @@ class App extends React.Component {
             <Route exact path='/countries' component={Countries} />
             {/* ML add more routes for other views */}
             <Route exact path='/regions' component={Regions} />
+            <Route exact path='/id' component={Country} />
+            <Route exact path='/id' component={Trip} />
             <Route path='*' component={NotFound} />
           </Switch>
         </MainLayout>
