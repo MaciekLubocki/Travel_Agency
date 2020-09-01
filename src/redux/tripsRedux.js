@@ -1,6 +1,7 @@
 /* SELECTORS */
 
 export const getAllTrips = ({trips}) => trips;
+export const countAllCards = ({cards}) => cards.length.filter(card => new RegExp(searchString, 'i').test(card.title));
 
 export const getFilteredTrips = ({trips, filters}) => {
   let output = trips;
@@ -14,26 +15,30 @@ export const getFilteredTrips = ({trips, filters}) => {
   // TODO - filter by duration
 
   if(filters.duration){
-    const pattern = new RegExp(filters.searchPhrase, 'i');
-    output = output.filter(trip => pattern.test(trip.name));
+    output = output.filter(trip => trip.days >= filters.duration.from && trip.days <= filters.duration.to);
   }
-
+  
 
   // TODO - filter by tags
-
-  if(filters.tags){
-    const pattern = new RegExp(filters.searchPhrase, 'i');
-    output = output.filter(trip => pattern.test(trip.name));
+  
+  // if(filters.tags){
+  //   output = output.filter(trip => trip.tags.every(filterTag) => trip.tags.includes(filterTag)));
+  // }
+  
+  
+  
+  if(filters.tags) {
+    output = output.filter(trip => filters.tags.every(filterTag => trip.tags.includes(filterTag)));
   }
 
-  export const countAllCards = ({cards}) => cards.length.filter(card => new RegExp(searchString, 'i').test(card.title));
 
-  // TODO - sort by cost descending (most expensive goes first)
 
-  if(filters.searchPhrase){
-    const pattern = new RegExp(filters.searchPhrase, 'i');
-    output = output.filter(trip => pattern.test(trip.name));
-  }
+  //TODO - sort by cost descending (most expensive goes first)
+
+  // if(filters.searchPhrase){
+  //   const pattern = new RegExp(filters.searchPhrase, 'i');
+  //   output = output.filter(trip => pattern.test(trip.name));
+  // }
 
   return output;
 };
