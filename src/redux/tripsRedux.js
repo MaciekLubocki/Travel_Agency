@@ -6,6 +6,7 @@ export const countAllCards = ({cards}) => cards.length.filter(card => new RegExp
 export const getFilteredTrips = ({trips, filters}) => {
   let output = trips;
 
+
   // filter by search phrase
   if(filters.searchPhrase){
     const pattern = new RegExp(filters.searchPhrase, 'i');
@@ -15,7 +16,8 @@ export const getFilteredTrips = ({trips, filters}) => {
   // TODO - filter by duration
 
   if(filters.duration){
-    output = output.filter(trip => trip.days >= filters.duration.from && trip.days <= filters.duration.to);
+    output = output.filter(trip => trip.days 
+      >= filters.duration.from && trip.days <= filters.duration.to);
   }
   
 
@@ -26,11 +28,11 @@ export const getFilteredTrips = ({trips, filters}) => {
   // }
   
   
-  
-  if(filters.tags) {
-    output = output.filter(trip => filters.tags.every(filterTag => trip.tags.includes(filterTag)));
+  if(filters.tags.length !=0) {
+    output = output.filter(trip =>
+       filters.tags.
+       every(filterTag => trip.tags.includes(filterTag)));
   }
-
 
 
   //TODO - sort by cost descending (most expensive goes first)
