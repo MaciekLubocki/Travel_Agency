@@ -19,11 +19,11 @@ const initialState = {
       from: 1,
       to: 14,
     },
-      },
-      order: {
-        trip: null,
-        email: '',
-        options: {},
+  },
+  order: {
+    trip: null,
+    email: '',
+    options: {},
   },
 };
 
