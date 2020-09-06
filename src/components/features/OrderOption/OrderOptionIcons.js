@@ -6,18 +6,21 @@ import { formatPrice } from '../../../utils/formatPrice';
 
 
 const OrderOptionIcons = ({ values, required, currentValue, setOptionValue }) => (
-    <div className={styles.component}>
+    <div className={styles.icons}>
         {required ? '' : (
-            <div className={styles.icon} 
-                onClick ={() => setOptionValue('')} value=''>
-                <Icon name="times-circle" />
-                {'none'}
+            <div 
+                onClick ={() => setOptionValue('times-circle')}>
+                <Icon name="" />
+                none
             </div>
         )}
         {values.map((value) => (
-            <div className={`${styles.icon} ${currentValue === value.id ? styles.iconActive : ''}`} key={value.id} onclick={() => setOptionValue(value.id)}>
-                <Icon name = {value.icon} />
-                {value.name} ({formatPrice(value.price)})
+             <div
+             key={value.id}
+             className={value.id == currentValue ? styles.iconActive : styles.icon}
+             onClick={() => setOptionValue(value.id)}>
+             <Icon name = {value.icon} />
+            {value.name} ({formatPrice(value.price)})
             </div>
         ))}
     </div>

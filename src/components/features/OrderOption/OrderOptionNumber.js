@@ -9,8 +9,8 @@ const OrderOptionNumber = ({setOptionValue, currentValue, price }) => (
                     className={styles.inputSmall} 
                     value={currentValue} 
                     onChange={event => setOptionValue(event.currentTarget.value)}
-                    min = {1} 
-                    max = {9}>
+                    min = '1' 
+                    max = '9'>
                 </input>
             {price}
         </div>
