@@ -3,7 +3,7 @@ import styles from './OrderOption.scss';
 import PropTypes from 'prop-types';
 
 
-const OrderOptionNumber = ({  currentValue, setOptionValue }) => (
+const OrderOptionNumber = ({setOptionValue }) => (
             <div className={styles.number}>
                 <input type = "number"
                     className={styles.inputSmall} 
@@ -17,9 +17,9 @@ const OrderOptionNumber = ({  currentValue, setOptionValue }) => (
     );
 
 OrderOptionNumber.propTypes = {
-    currentValue:PropTypes.string,
+    currentValue:PropTypes.number,
     setOptionValue:PropTypes.func,
-    proce:PropTypes.string,
+    price:PropTypes.string,
 };
 
 export default OrderOptionNumber;
