@@ -1,6 +1,5 @@
 import {combineReducers, createStore} from 'redux';
 import tripList from '../data/trips.json';
-
 import globalReducer from './globalRedux';
 import filtersReducer from './filtersRedux';
 import orderReducer from './orderRedux';
