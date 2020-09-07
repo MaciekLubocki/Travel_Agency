@@ -9,23 +9,23 @@ const newValueSet = (currentValue, id, checked) => {
       return [
         ...currentValue,
         id,
+        
       ];
     } else {
       return currentValue.filter(value => value != id);
     }
   };
-
-
-const OrderOptionCheckboxes = ({ values, currentValue, setOptionValue }) => (
+  
+  const OrderOptionCheckboxes = ({ values, currentValue, setOptionValue, id }) => (
     <div className={styles.checkboxes}>
         {values.map((value) => (
-        <label key= {value.id}>            
+          <label key= {value.id}>            
         <input 
             type = "checkbox"
             value = {value.id}
             checked = {currentValue.includes(value.id)} 
             onChange={event => setOptionValue(newValueSet(currentValue. value.id, event.currentTarget.checked))} />
-            
+            {console.log('id: ', id,'value: ', value,'value.id: ', value.id,'currentValue: ' currentValue)}
             {value.name}
             ({formatPrice(value.price)})
         </label>
@@ -33,6 +33,8 @@ const OrderOptionCheckboxes = ({ values, currentValue, setOptionValue }) => (
         )}
         </div>
     );
+    
+    
 
 OrderOptionCheckboxes.propTypes = {
     values:PropTypes.array,
