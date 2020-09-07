@@ -24,8 +24,7 @@ const newValueSet = (currentValue, id, checked) => {
             type = "checkbox"
             value = {value.id}
             checked = {currentValue.includes(value.id)} 
-            onChange={event => setOptionValue(newValueSet(currentValue. value.id, event.currentTarget.checked))} />
-            {console.log('id: ', id,'value: ', value,'value.id: ', value.id,'currentValue: ' currentValue)}
+            onChange={event => setOptionValue(newValueSet(currentValue, value.id, event.currentTarget.checked))} />
             {value.name}
             ({formatPrice(value.price)})
         </label>
