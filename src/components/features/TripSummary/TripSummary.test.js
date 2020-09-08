@@ -29,7 +29,7 @@ describe('Component TripSummary', () => {
     const expectedName = 'name';
     const expectedCost = 'cost';
     const expactedDays = 1;
-    const component = shallow(<TripSummary id='test' image='img' name={expectedName} cost={expectedCost} days={expactedDays} tags={['test', 'test']} />);
+    const component = shallow(<TripSummary id='test' image='image' name={expectedName} cost={expectedCost} days={expactedDays} tags={['test', 'test']} />);
     const renderedName = component.find('.title').text();
     const renderedCost = component.find('.details').childAt(1).text(); 
     const renderedDays = component.find('.details').childAt(0).text(); 

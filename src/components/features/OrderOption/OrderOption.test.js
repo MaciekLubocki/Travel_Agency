@@ -7,11 +7,21 @@ describe('Component OrderOption', () => {
   it('should render without crashing', () => {
     const component = shallow(<OrderOption name='test' type='test' />);
     expect(component).toBeTruthy();
-  });
-  it('should return empty object if called without required props', () => {
-    const component = shallow(<OrderOption />);
-    expect(component).toEqual({});
-  });
+  })
+
+  it('should render without type given', () => {
+    const component = shallow(<OrderOption />)
+    expect('component').toEqal({});
+  })
+
+  it('should display title name', ()=> {
+     const expectedName = 'name';
+     const component = shallow( <OrderOption name ={expectedName} /> );
+      expect(component.find('.title').text()).toEqual(expectedName);    
+});   
+    
+
+
   it('should render correct name', () => {
     const expectedName = 'name';
     const component = shallow(<OrderOption type='dropdown' name={expectedName} />);
