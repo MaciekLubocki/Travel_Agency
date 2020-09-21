@@ -1,28 +1,58 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './DaysToSummer.scss';
 
 class DaysToSummer extends React.Component {
+  static propTypes = {
+    title: PropTypes.string,
+    summerTime: PropTypes.string,
+  };
 
-  getCountdownDays() {
+  DaysToSummer() {
     const currentDate = new Date();
-    const nextVacation = new Date(Date.UTC(currentDate.getUTCFullYear(),5,21,10));
-    if(currentDate > nextVacation) {
-      nextVacation.setUTCFullYear(currentDate.getUTCFullYear() + 1);
+    const summerStart = new Date(
+      Date.UTC(currentDate.getUTCFullYear(), 5, 21)
+    );
+    const summerEnd = new Date(Date.UTC(currentDate.getUTCFullYear(), 7, 23));
+    const oneDayToSummer = new Date(
+      Date.UTC(currentDate.getUTCFullYear(), 7, 22)
+    );
+
+    const daysToSummerDescription = ' days to summer';
+    const oneDayToSummerDescription = ' day to summer';
+    const oneDay = 24 * 60 * 60 * 1000; 
+    let diffDays;
+
+    if (currentDate < summerStart) {
+      diffDays =
+      Math.ceil(Math.abs((currentDate - summerStart) / oneDay)) +
+        "days to summer";
+    } else if (currentDate > summerEnd) {
+      const nextYear = currentDate.getUTCFullYear() + 1;
+      const nextSummer = new Date(nextYear, 5, 21);
+
+      diffDays =
+      Math.ceil(Math.abs((currentDate - summerStart) / oneDay)) +
+      daysToSummerDescription;
+    } else if (currentDate == oneDayToSummer) {
+      diffDays =
+      Math.ceil(Math.abs((currentDate - summerStart) / oneDay)) +
+      oneDayToSummerDescription;
     }
 
-    const diffDays = Math.round((nextVacation.getTime() - currentDate.getTime())/(1000 * 3600 * 24));
     return diffDays;
   }
 
-  createDesc(diffDays) {
-    return diffDays === 1 ? `${diffDays} day to summer` : `${diffDays} days to summer`;
-  }	  
   render() {
+    const { title, summerTime } = this.props;
+    const DaysToSummer = this.DaysToSummer();
+
     return (
-      <div>
-        <h3 className={styles.vacationCountDesc}>
-          {this.getCountdownDays() < 271 ? this.createDesc(this.getCountdownDays()) : null}
-        </h3> 
+      <div className={styles.component}>
+        <h3 className={styles.title}>{title}</h3>
+        <div className={styles.countdown}>
+          {DaysToSummer ? DaysToSummer : summerTime}
+        </div>
       </div>
     );
   }
